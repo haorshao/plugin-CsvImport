@@ -48,6 +48,7 @@ class CsvImport_Form_Mapping extends Omeka_Form
             $rowSubForm->addElement('checkbox', 'html');
             $rowSubForm->addElement('checkbox', 'tags');
             $rowSubForm->addElement('checkbox', 'file');
+            $rowSubForm->addElement('checkbox', 'neatline');
             $this->_setSubFormDecorators($rowSubForm);
             $this->addSubForm($rowSubForm, "row$index");
         }
@@ -220,6 +221,10 @@ class CsvImport_Form_Mapping extends Omeka_Form
         return $this->getSubForm("row$index")->file->isChecked();
     }
 
+    protected function _isNeatlineMapped($index){
+        return $this->getSubForm("row$index")->neatline->isChecked();
+    }
+
     /**
     * Returns the element id mapped to the subform row
     *
@@ -287,6 +292,9 @@ class CsvImport_Form_Mapping extends Omeka_Form
             $columnMap[] = new CsvImport_ColumnMap_File($columnName, $this->_fileDelimiter);
         }
 
+        if($this->_isNeatlineMapped($index)){
+            $columnMap[] = new CsvImport_ColumnMap_NeatlineCoverage($columnName);
+        }
         $elementIds = $this->_getMappedElementId($index);
         $isHtml = $this->_getRowValue($index, 'html');
         foreach($elementIds as $elementId) {

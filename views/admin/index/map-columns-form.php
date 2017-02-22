@@ -12,6 +12,7 @@
         <th><?php echo __('Use HTML?'); ?></th>
         <th><?php echo __('Tags?'); ?></th>
         <th><?php echo __('Files?'); ?></th>
+        <th><?php echo __('Neatline?'); ?></th>
     </tr>
     </thead>
     <tbody>

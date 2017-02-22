@@ -225,6 +225,9 @@ class CsvImport_IndexController extends Omeka_Controller_AbstractActionControlle
                 case 'tags':
                     $columnMaps[] = new CsvImport_ColumnMap_Tag($heading, $tagDelimiter);
                     break;
+                case 'neatline':
+                    $columnMaps[] = new CsvImport_ColumnMap_NeatlineCoverage($heading);
+                    break; 
                 case 'public':
                     $columnMaps[] = new CsvImport_ColumnMap_Public($heading);
                     break;
